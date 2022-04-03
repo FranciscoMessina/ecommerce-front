@@ -7,6 +7,8 @@ const useStyles = createStyles((theme) => ({
     borderTop: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+    height: 60,
+    maxHeight: 60,
   },
 
   inner: {

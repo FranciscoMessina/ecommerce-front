@@ -1,23 +1,19 @@
-import {
-  AppShell,
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-  ScrollArea,
-} from '@mantine/core';
+import { AppShell, ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { Header } from './components/Header';
 import { FooterCentered } from './components/Footer';
 import { Detail } from './pages/Detail';
+import { BrowserRouter, Outlet } from 'react-router-dom';
+import { ModalsProvider } from '@mantine/modals';
 
 const links: { link: string; label: string }[] = [
   {
-    link: '/catalog',
-    label: 'Catalog',
+    link: '/',
+    label: 'Home',
   },
   {
-    link: '/about',
-    label: 'About',
+    link: '/products',
+    label: 'Products',
   },
   {
     link: '/sale',
@@ -36,17 +32,21 @@ function App() {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withNormalizeCSS withGlobalStyles>
-        <AppShell
-          header={<Header links={links} />}
-          footer={<FooterCentered />}
-          styles={(theme) => ({
-            main: {
-              backgroundColor:
-                theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
-            },
-          })}>
-          <Detail />
-        </AppShell>
+        <ModalsProvider>
+          <AppShell
+            header={<Header links={links} />}
+            footer={<FooterCentered />}
+            fixed
+            zIndex={150}
+            styles={(theme) => ({
+              main: {
+                backgroundColor:
+                  theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+              },
+            })}>
+            <Outlet />
+          </AppShell>
+        </ModalsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );

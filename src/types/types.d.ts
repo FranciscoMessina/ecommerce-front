@@ -5,7 +5,7 @@ export interface IProduct {
   price: number;
   images: [string, string, string, string];
   freeShipping: boolean;
-  protected: boolean;
+  safe: boolean;
   stock: number;
   createdAt: number;
   ratings: {
@@ -13,11 +13,11 @@ export interface IProduct {
     average: number;
   };
   category: Category;
-  reviews: {
+  reviews?: {
     user: string;
     comment: string;
     rating: number;
   }[];
 }
 
-export type Category = 'Shoes' | 'Bags' | 'Accessories' | 'Clothing';
+export type Category = 'Footwear' | 'Shirts' | 'Accessories' | 'Outerwear';

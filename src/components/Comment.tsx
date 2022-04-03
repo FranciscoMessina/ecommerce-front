@@ -1,5 +1,6 @@
 import React from 'react';
-import { createStyles, Text, Avatar, Group, Spoiler } from '@mantine/core';
+import { createStyles, Text, Avatar, Group, Spoiler, Center } from '@mantine/core';
+import { UserCircle } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -19,7 +20,10 @@ export function CommentSimple({ user, comment, rating }: CommentSimpleProps) {
   return (
     <div>
       <Group>
-        <Avatar radius='xl' />
+        <Avatar color='blue'>
+          <UserCircle size={30} />
+        </Avatar>
+
         <div>
           <Text size='sm'>{user}</Text>
           <Text size='xs' color='dimmed'>
